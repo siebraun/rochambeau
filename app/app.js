@@ -2,7 +2,7 @@
 class Player {
   constructor() {
     //   select options from div containing rock, paper, or scissors
-    this.options = document.querySelectorAll(".select");
+    this.options = document.querySelectorAll("svg");
     this.playerChoice = "";
   }
   definePlayerChoice() {
