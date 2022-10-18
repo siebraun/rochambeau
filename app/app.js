@@ -62,11 +62,7 @@ class Result {
     }
     return this.result;
   }
-}
 
-// game stats class
-class GameStats {
-  // show winner
   showStats(result) {
     const winner = document.querySelector(".winner");
     if (result === "win") {
@@ -85,7 +81,7 @@ class Game {
     this.player = new Player();
     this.comp = new Computer();
     this.result = new Result();
-    this.gameStats = new GameStats();
+    this.gameStats = new Result();
 
     this.startGameBtn = document.querySelector(".start");
     this.restartGameBtn = document.querySelector(".restart");
@@ -95,7 +91,7 @@ class Game {
 
   // start game
   startGame() {
-    const { player, comp, result, gameStats } = this;
+    const { player, comp, result } = this;
     player.definePlayerChoice();
 
     // on button click
@@ -109,7 +105,7 @@ class Game {
       result.defineResult(player.playerChoice, comp.compChoice);
       player.playerChoice = "";
       player.options.forEach((option) => option.classList.remove("selected"));
-      gameStats.showStats(result.result);
+      result.showStats(result.result);
     });
 
     // restart
@@ -117,7 +113,7 @@ class Game {
       let { aiChoice, playerChoice } = this;
       const whoWin = document.querySelector(".winner");
 
-      gameStats.showStats();
+      result.showStats();
 
       whoWin.textContent = "";
       aiChoice.textContent = "";
